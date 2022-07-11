@@ -15,7 +15,7 @@ config = {
 def show_menu():
     print("\n -- Main Menu --")
 
-    print("     11. View Books\n     2. View Store Locations\n     3. My Account\n     4. Exit Program")
+    print("     1. View Books\n     2. View Store Locations\n     3. My Account\n     4. Exit Program")
 
     try:
         choice = int(input(' Enter number to view a category: '))
