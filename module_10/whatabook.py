@@ -6,7 +6,7 @@ from mysql.connector import errorcode
 """database connection"""
 config = {
     "user": "root",
-    "password": "Megacubs86!!"
+    "password": "Megacubs86!!",
     "host": "127.0.0.1",
     "database": "whatabook",
     "raise_on_warnings": True
@@ -15,7 +15,7 @@ config = {
 def show_menu():
     print("\n -- Main Menu --")
 
-    print("     1. View Books\n     2. View Store Locations\n   3. My Account\n     4. Exit Program")
+    print("     11. View Books\n     2. View Store Locations\n     3. My Account\n     4. Exit Program")
 
     try:
         choice = int(input(' Enter number to view a category: '))
