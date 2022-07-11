@@ -1,5 +1,5 @@
 /*
-    Title: whatabook_init.sql
+    Title: whatabook.init.sql
     Author: Ryan Munson
     Date: 10 July 2022
     Description: WhatABook database initialization script.
