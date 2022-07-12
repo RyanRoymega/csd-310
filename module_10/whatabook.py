@@ -5,8 +5,8 @@ from mysql.connector import errorcode
 
 """database connection"""
 config = {
-    "user": "root",
-    "password": "Megacubs86!!",
+    "user": "whatabook_user",
+    "password": "MySQL8IsGreat!",
     "host": "127.0.0.1",
     "database": "whatabook",
     "raise_on_warnings": True
