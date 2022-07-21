@@ -31,11 +31,11 @@ def show_books(_cursor):
     books = _cursor.fetchall()
     print('\n -- WHATABOOK BOOK LISTING --')
 
-    #displaying results for data set
+    # displaying results for data set
     for book in books:
         print(" Book ID:{}\n Book Name: {}\n Author: {}\n Details: {}\n".format(book[0], book[1], book[2], book[3]))
 
-    #viewing location list
+    # viewing location list
 def show_locations(_cursor):
     _cursor.execute("SELECT store_id, locale from store")
     locations = _cursor.fetchall()
@@ -44,7 +44,7 @@ def show_locations(_cursor):
     for location in locations:
         print(" Locale: {}\n".format(location[1]))
 
-    #validating user IDs
+    # validating user IDs
 def validate_user():
     try:
         user_id = int(input('\n Enter a customer id <Enter a number 1-3>: '))
@@ -59,7 +59,7 @@ def validate_user():
 
         sys.exit(0)
 
-    #showing user account menu
+    # showing user account menu
 def show_account_menu():
     try:
         print("\n -- Customer Menu --")
@@ -72,7 +72,7 @@ def show_account_menu():
 
         sys.exit(0)
 
-    #show list of books for a users wishlist
+    # show list of books for a users wishlist
 def show_wishlist(_cursor, _user_id):
     _cursor.execute("SELECT user.user_id, user.first_name, user.last_name, book.book_id, book.book_name, book.author " +
                     "FROM wishlist " +
@@ -86,7 +86,7 @@ def show_wishlist(_cursor, _user_id):
     for book in wishlist:
         print(" Book Name: {}\n Author: {}\n".format(book[4], book[5]))
 
-    #show list of books not in the database
+    # show list of books not in the database
 def show_books_to_add(_cursor, _user_id):
     query = ("SELECT book_id, book_name, author, details "
             "FROM book "
@@ -104,7 +104,7 @@ def show_books_to_add(_cursor, _user_id):
 def add_book_to_wishlist(_cursor, _user_id, _book_id):
     _cursor.execute("INSERT INTO wishlist(user_id, book_id) VALUES({}, {})".format(_user_id, _book_id))
 
-    #capture potential SQL database errors
+    # capture potential SQL database errors
 try:
     db = mysql.connector.connect(**config)
     cursor = db.cursor()
@@ -112,7 +112,7 @@ try:
 
     user_selection = show_menu()
 
-    #user number options 1-3 to determine menu category
+    # user number options 1-3 to determine menu category
     while user_selection !=4:
 
         if user_selection == 1:
@@ -125,7 +125,7 @@ try:
             my_user_id = validate_user
             account_option = show_account_menu()
 
-            #use account number 1 or 2 to receive valid output
+            # use account number 1 or 2 to receive valid output
             while account_option !=3:
 
                 if account_option == 1:
@@ -134,7 +134,7 @@ try:
                 if account_option == 2:
                     show_books_to_add(cursor, my_user_id)
 
-                #enter a number 1-9 to add book to wishlist
+                # enter a number 1-9 to add book to wishlist
                 book_id = int(input("\n Enter book id:"))
                 add_book_to_wishlist(cursor, my_user_id, book_id)
                 db.commit()
