@@ -1,32 +1,30 @@
 /*
-    Title: whatabook.init.sql
+    Title: db_init.sql
     Author: Ryan Munson
     Date: 10 July 2022
     Description: WhatABook database initialization script.
 */
 
-# drop test user if exists 
+-- drop test user if exists 
 DROP USER IF EXISTS 'whatabook_user'@'localhost';
 
-# create whatabook_user and grant them all privileges to the whatabook database 
+-- create whatabook_user and grant them all privileges to the whatabook database 
 CREATE USER 'whatabook_user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'MySQL8IsGreat!';
 
-# grant all privileges to the whatabook database to user whatabook_user on localhost 
+-- grant all privileges to the whatabook database to user whatabook_user on localhost 
 GRANT ALL PRIVILEGES ON whatabook.* TO'whatabook_user'@'localhost';
 
-# drop contstraints if they exist
+-- drop contstraints if they exist
 ALTER TABLE wishlist DROP FOREIGN KEY fk_book;
 ALTER TABLE wishlist DROP FOREIGN KEY fk_user;
 
-# drop tables if they exist
+-- drop tables if they exist
 DROP TABLE IF EXISTS store;
 DROP TABLE IF EXISTS book;
 DROP TABLE IF EXISTS wishlist;
 DROP TABLE IF EXISTS user;
 
-/*
-    Create table(s)
-*/
+-- Create table(s)
 CREATE TABLE store (
     store_id    INT             NOT NULL    AUTO_INCREMENT,
     locale      VARCHAR(500)    NOT NULL,
@@ -61,15 +59,11 @@ CREATE TABLE wishlist (
         REFERENCES user(user_Id)
 );
 
-/*
-    insert store record 
-*/
+-- insert store record 
 INSERT INTO store(locale) 
     VALUES('4400 Sergeant Rd #550, Sioux City, IA 51106');
 
-/*
-    insert book records 
-*/
+-- insert book records 
 INSERT INTO book(book_name, author, details) 
     VALUES ('Scar Tissue', 'Anthony Kiedis', 'Scar Tissue is the autobiography of Red Hot Chili Peppers vocalist Anthony Kiedis.');
 
@@ -97,9 +91,7 @@ INSERT INTO book(book_name, author, details)
 INSERT INTO book(book_name, author, details) 
     VALUES ('Original Gangstas', 'Ben Westhoff', 'It’s the definitive history of L.A. gangsta rap, revealing how a cohort of then-unknown rappers.');
 
-/*
-    insert user
-*/ 
+-- insert user
 INSERT INTO user(first_name, last_name) 
     VALUES ('John', 'Frusciante');
 
@@ -109,9 +101,7 @@ INSERT INTO user (first_name, last_name)
 INSERT INTO user (first_name, last_name) 
     VALUES ('Anthony', 'Kiedis');
 
-/*
-    insert wishlist records 
-*/
+-- insert wishlist records 
 INSERT INTO wishlist (user_id, book_id) 
     VALUES (
         (SELECT user_id FROM user WHERE first_name = 'John'),
