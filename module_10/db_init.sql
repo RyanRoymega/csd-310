@@ -56,7 +56,7 @@ CREATE TABLE wishlist (
         REFERENCES book(book_id),
     CONSTRAINT fk_user
     FOREIGN KEY (user_id)
-        REFERENCES user(user_Id)
+        REFERENCES user(user_id)
 );
 
 -- insert store record 
