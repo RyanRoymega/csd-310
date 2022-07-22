@@ -87,7 +87,7 @@ def show_wishlist(_cursor, _user_id):
 
     # show list of books not in the database
 def show_books_to_add(_cursor, _user_id):
-    query = ("SELECT book_id, book_name, author, details_V " + "FROM book " + "WHERE book_id NOT IN (SELECT book_id FROM wishlist WHERE user_id = {})".format(_user_id))
+    query = ("SELECT book_id, book_name, author, details_V FROM book WHERE book_id NOT IN (SELECT book_id FROM wishlist WHERE user_id = {})".format(_user_id))
     print(query)
 
     _cursor.execute(query)

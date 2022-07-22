@@ -9,10 +9,10 @@ WHERE user.user_id = 1;
 SELECT store_id, locale from store;
 
 -- ALL WHATABOOK BOOKS
-SELECT book_id, book_name, author, details_V from book;
+SELECT book_id, book_name, details_V, author from book;
 
 -- VIEW LISTING OF BOOKS THAT ARE NOT IN USERS WISHLIST
-SELECT book_id, book_name, author, details_V
+SELECT book_id, book_name, details_V, author
 FROM book
 WHERE book_id NOT IN (SELECT book_id FROM wishlist WHERE user_id = 2);
 
