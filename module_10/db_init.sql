@@ -64,31 +64,31 @@ INSERT INTO store(locale)
     VALUES('4400 Sergeant Rd #550, Sioux City, IA 51106');
 
 -- insert book records 
-INSERT INTO book(book_name, author, details_V) 
+INSERT INTO book(book_name, author, details) 
     VALUES ('Scar Tissue', 'Anthony Kiedis', 'Scar Tissue is the autobiography of Red Hot Chili Peppers vocalist Anthony Kiedis.');
 
-INSERT INTO book(book_name, author, details_V) 
+INSERT INTO book(book_name, author, details) 
     VALUES ('Acid For The Children', 'Flea', 'Acid for the Children is the memoir of Red Hot Chili Peppers bassist Flea.');
 
-INSERT INTO book(book_name, author, details_V) 
+INSERT INTO book(book_name, author, details) 
     VALUES ('The Storyteller', 'Dave Grohl', 'A collection of memories of a life lived loud.');
 
-INSERT INTO book(book_name, author, details_V) 
+INSERT INTO book(book_name, author, details) 
     VALUES ('Beastie Boys Book', 'Michael Diamond', 'A panoramic experience that tells the story of Beastie Boys.');
 
-INSERT INTO book(book_name, author, details_V) 
+INSERT INTO book(book_name, author, details) 
     VALUES ('Heaven Is A Playground', 'Rick Telander', 'Heaven Is a Playground was the first book on the uniquely American phenomenon of urban basketball.');
 
-INSERT INTO book(book_name, author, details_V) 
+INSERT INTO book(book_name, author, details) 
     VALUES ('KRINK New York City', 'Craig Costello', 'Craig Costello, aka KR, grew up in Queens, New York, where graffiti was part of the landscape and a symbol of the city.');
 
-INSERT INTO book(book_name, author, details_V) 
+INSERT INTO book(book_name, author, details) 
     VALUES ('I Put A Spell On You', 'Nina Simone', 'The 1992 autobiography by Nina Simone, written with Stephen Cleary.');
 
-INSERT INTO book(book_name, author, details_V) 
+INSERT INTO book(book_name, author, details) 
     VALUES ('The Eye', 'Nathan Williams', 'In The Eye, we meet fashion designers like Claire Waight Keller and Thom Browne.');
 
-INSERT INTO book(book_name, author, details_V) 
+INSERT INTO book(book_name, author, details) 
     VALUES ('Original Gangstas', 'Ben Westhoff', 'It’s the definitive history of L.A. gangsta rap, revealing how a cohort of then-unknown rappers.');
 
 -- insert user
