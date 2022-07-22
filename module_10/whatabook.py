@@ -1,3 +1,8 @@
+# Title: whatabook.py
+# Author: Ryan Munson
+# Date: 10 July 2022
+# Description: WhatABook Final Project
+
 """import statements"""
 import sys
 import mysql.connector
@@ -14,16 +19,14 @@ config = {
 
 def show_menu():
     print("\n -- Main Menu --")
-
     print("     1. View Books\n     2. View Store Locations\n     3. My Account\n     4. Exit Program")
 
     try:
         choice = int(input(' Enter number to view a category: '))
-
         return choice
+
     except ValueError:
         print("\n Invalid number, program terminated...\n")
-
         sys.exit(0)
 
 def show_books(_cursor):
@@ -54,6 +57,7 @@ def validate_user():
             sys.exit(0)
 
         return user_id
+        
     except ValueError:
         print("\n Invalid number, program terminated...\n")
 
@@ -83,9 +87,7 @@ def show_wishlist(_cursor, _user_id):
 
     # show list of books not in the database
 def show_books_to_add(_cursor, _user_id):
-    query = ("SELECT book_id, book_name, author, details_V "
-            "FROM book "
-            "WHERE book_id NOT IN (SELECT book_id FROM wishlist WHERE user_id = {})".format(_user_id))
+    query = ("SELECT book_id, book_name, author, details_V " + "FROM book " + "WHERE book_id NOT IN (SELECT book_id FROM wishlist WHERE user_id = {})".format(_user_id))
     print(query)
 
     _cursor.execute(query)

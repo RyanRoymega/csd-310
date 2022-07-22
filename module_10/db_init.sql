@@ -15,8 +15,8 @@ CREATE USER 'whatabook_user'@'localhost' IDENTIFIED WITH mysql_native_password B
 GRANT ALL PRIVILEGES ON whatabook.* TO'whatabook_user'@'localhost';
 
 -- drop contstraints if they exist
-ALTER TABLE wishlist DROP FOREIGN KEY fk_book;
-ALTER TABLE wishlist DROP FOREIGN KEY fk_user;
+ALTER TABLE wishlist DROP FOREIGN KEY book;
+ALTER TABLE wishlist DROP FOREIGN KEY user;
 
 -- drop tables if they exist
 DROP TABLE IF EXISTS store;
@@ -51,10 +51,10 @@ CREATE TABLE wishlist (
     user_id         INT         NOT NULL,
     book_id         INT         NOT NULL,
     PRIMARY KEY (wishlist_id),
-    CONSTRAINT fk_book
+    CONSTRAINT book
     FOREIGN KEY (book_id)
         REFERENCES book(book_id),
-    CONSTRAINT fk_user
+    CONSTRAINT user
     FOREIGN KEY (user_id)
         REFERENCES user(user_id)
 );
