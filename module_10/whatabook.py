@@ -27,7 +27,7 @@ def show_menu():
         sys.exit(0)
 
 def show_books(_cursor):
-    _cursor.execute("SELECT book_id, book_name, author, details from book")
+    _cursor.execute("SELECT book_id, book_name, author, details_V from book")
     books = _cursor.fetchall()
     print('\n -- WHATABOOK BOOK LISTING --')
 
@@ -37,17 +37,17 @@ def show_books(_cursor):
 
     # viewing location list
 def show_locations(_cursor):
-    _cursor.execute("SELECT store_id, locale from store")
+    _cursor.execute("SELECT store_id, location from store")
     locations = _cursor.fetchall()
     print("\n -- WHATABOOK STORE LOCATIONS --")
 
     for location in locations:
-        print(" Locale: {}\n".format(location[1]))
+        print(" Location: {}\n".format(location[1]))
 
     # validating user IDs
 def validate_user():
     try:
-        user_id = int(input('\n Enter a customer id <Enter a number 1-3>: '))
+        user_id = int(input('\n Enter User ID: '))
 
         if user_id < 0 or user_id > 3:
             print("\n ID number is invalid, program terminated...\n")
@@ -65,20 +65,15 @@ def show_account_menu():
         print("\n -- Customer Menu --")
         print(" 1. Wishlist\n 2. Add Book\n 3. Main Menu")
         account_option = int(input(' Enter a number to view options: '))
-
         return account_option
+
     except ValueError:
         print("\n Number is not available, terminating program...\n")
-
         sys.exit(0)
 
     # show list of books for a users wishlist
 def show_wishlist(_cursor, _user_id):
-    _cursor.execute("SELECT user.user_id, user.first_name, user.last_name, book.book_id, book.book_name, book.author " +
-                    "FROM wishlist " +
-                    "INNER JOIN user ON wishlist.user_id = user.user_id " +
-                    "INNER JOIN book ON wishlist.book_id = book.book_id " +
-                    "WHERE user.user_id = {}".format(_user_id))
+    _cursor.execute("SELECT user.user_id, user.first_name, user.last_name, book.book_id, book.book_name, book.author " + "FROM wishlist " + "INNER JOIN user ON wishlist.user_id = user.user_id " + "INNER JOIN book ON wishlist.book_id = book.book_id " + "WHERE user.user_id = {}".format(_user_id))
 
     wishlist = _cursor.fetchall()
     print("\n -- USER WISHLIST BOOKS --")
@@ -88,7 +83,7 @@ def show_wishlist(_cursor, _user_id):
 
     # show list of books not in the database
 def show_books_to_add(_cursor, _user_id):
-    query = ("SELECT book_id, book_name, author, details "
+    query = ("SELECT book_id, book_name, author, details_V "
             "FROM book "
             "WHERE book_id NOT IN (SELECT book_id FROM wishlist WHERE user_id = {})".format(_user_id))
     print(query)

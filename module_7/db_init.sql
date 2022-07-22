@@ -40,7 +40,6 @@ CREATE TABLE player (
         REFERENCES team(team_id)
 );
 
-
 -- insert team records
 INSERT INTO team(team_name, mascot)
     VALUES('Team Gandalf', 'White Wizards');
