@@ -43,12 +43,12 @@ def show_books(_cursor):
 
     # viewing location list
 def show_locations(_cursor):
-    _cursor.execute("SELECT store_id, location from store")
+    _cursor.execute("SELECT store_id, locale FROM store")
     locations = _cursor.fetchall()
     print("\n -- WHATABOOK STORE LOCATIONS --")
 
     for location in locations:
-        print(" Location: {}\n".format(location[1]))
+        print("Locale: {}\n".format(location[1]))
 
     # validating user IDs
 def validate_user():
@@ -75,7 +75,7 @@ def show_account_menu():
         return account_option
     except ValueError:
         print("\n Number is not available, terminating program...\n")
-        
+
         sys.exit(0)
 
     # show list of books for a users wishlist
@@ -122,7 +122,7 @@ try:
             show_locations(cursor)
 
         if user_selection == 3:
-            my_user_id = validate_user
+            my_user_id = validate_user()
             account_option = show_account_menu()
 
             # use account number 1 or 2 to receive valid output
