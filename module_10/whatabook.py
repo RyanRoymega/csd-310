@@ -23,15 +23,18 @@ def show_menu():
 
     try:
         choice = int(input(' Enter number to view a category: '))
-        return choice
 
+        return choice
     except ValueError:
         print("\n Invalid number, program terminated...\n")
+
         sys.exit(0)
 
 def show_books(_cursor):
-    _cursor.execute("SELECT book_id, book_name, author, details_V from book")
+    _cursor.execute("SELECT book_id, book_name, author, details from book")
+
     books = _cursor.fetchall()
+
     print('\n -- WHATABOOK BOOK LISTING --')
 
     # displaying results for data set
@@ -57,7 +60,6 @@ def validate_user():
             sys.exit(0)
 
         return user_id
-        
     except ValueError:
         print("\n Invalid number, program terminated...\n")
 
@@ -69,10 +71,11 @@ def show_account_menu():
         print("\n -- Customer Menu --")
         print(" 1. Wishlist\n 2. Add Book\n 3. Main Menu")
         account_option = int(input(' Enter a number to view options: '))
-        return account_option
 
+        return account_option
     except ValueError:
         print("\n Number is not available, terminating program...\n")
+        
         sys.exit(0)
 
     # show list of books for a users wishlist
